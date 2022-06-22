@@ -68,7 +68,7 @@
                         <rule>
                             <limits>
                                 <limit>
-                                    <counter>LINE</counter>
+                                    <counter>BRANCH</counter>
                                     <value>COVEREDRATIO</value>
                                     <minimum>100%</minimum>
                                 </limit>
@@ -76,21 +76,6 @@
                         </rule>
                     </rules>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.5.3.0</version>
-                <executions>
-                    <execution>
-                        <id>check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
