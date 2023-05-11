@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadioTest {
 
     @Test
-    void shouldChangeOnZeroStationIfCurrentIsNine() {
+    void shouldChangeOnZeroStationIfCurrentIsMax() {
         Radio radio = new Radio();
         int currentRadioStation = 9;
         radio.setCurrentRadiostationNumber(currentRadioStation);
@@ -17,7 +17,7 @@ public class RadioTest {
     }
 
     @Test
-    void shouldChangeOnNineStationIfCurrentIsZero() {
+    void shouldChangeOnMaxStationIfCurrentIsZero() {
         Radio radio = new Radio();
         int currentRadioStation = 0;
         radio.setCurrentRadiostationNumber(currentRadioStation);
@@ -67,7 +67,7 @@ public class RadioTest {
     @Test
     void shouldNotSetVolumeOverMax() {
         Radio radio = new Radio();
-        int volume = 11;
+        int volume = 101;
         radio.setCurrentVolume(volume);
         int expected = 0;
         assertEquals(expected, radio.getCurrentVolume());
@@ -85,20 +85,20 @@ public class RadioTest {
     @Test
     void volumeIncrease() {
         Radio radio = new Radio();
-        int volume = 8;
+        int volume = 99;
         radio.setCurrentVolume(volume);
         radio.increaseVolume();
-        int expected = 9;
+        int expected = 100;
         assertEquals(expected, radio.getCurrentVolume());
     }
 
     @Test
     void volumeDecrease() {
         Radio radio = new Radio();
-        int volume = 7;
+        int volume = 1;
         radio.setCurrentVolume(volume);
         radio.decreaseVolume();
-        int expected = 6;
+        int expected = 0;
         assertEquals(expected, radio.getCurrentVolume());
 
     }
@@ -106,10 +106,10 @@ public class RadioTest {
     @Test
     void shouldNotIncreaseIfVolumeIsMax() {
         Radio radio = new Radio();
-        int volume = 10;
+        int volume = 100;
         radio.setCurrentVolume(volume);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, radio.getCurrentVolume());
     }
 
@@ -123,4 +123,10 @@ public class RadioTest {
         assertEquals(expected, radio.getCurrentVolume());
     }
 
+    @Test
+    void ShouldSetRadiostationMaxCount() {
+        Radio radio = new Radio(20);
+        radio.setCurrentRadiostationNumber(19);
+        assertEquals(19, radio.getCurrentRadiostationNumber());
+    }
 }
